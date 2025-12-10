@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>آموزش لغات درس ۴ - زبان هفتم (شغل‌ها)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Lalezar&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Lalezar&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
-            padding-bottom: 50px; /* فضا برای مشخصات طراح */
+            padding-bottom: 70px; /* فضا برای مشخصات طراح */
         }
         
         .container {
@@ -162,53 +162,62 @@
             background: linear-gradient(to right, #4CAF50, #388E3C);
         }
         
-        /* مشخصات طراح در پایین صفحه */
+        /* مشخصات طراح در پایین صفحه - بزرگتر */
         .designer-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-top: 2px solid #7e57c2;
-            padding: 8px 0;
+            background: rgba(255, 255, 255, 0.97);
+            border-top: 3px solid #7e57c2;
+            padding: 15px 0;
             text-align: center;
             z-index: 100;
             backdrop-filter: blur(10px);
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
         }
         
         .designer-info {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 25px;
             font-family: 'Montserrat', sans-serif;
         }
         
         .designer-photo-small {
-            width: 30px;
-            height: 30px;
+            width: 55px; /* بزرگتر شده */
+            height: 55px; /* بزرگتر شده */
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #7e57c2;
+            border: 3px solid #7e57c2;
+            box-shadow: 0 4px 12px rgba(126, 87, 194, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .designer-photo-small:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(126, 87, 194, 0.4);
         }
         
         .designer-name {
             color: #311b92;
-            font-size: 0.85rem;
+            font-size: 1.1rem; /* بزرگتر شده */
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
         
         .designer-signature {
             color: #5e35b1;
-            font-size: 0.8rem;
+            font-size: 1rem; /* بزرگتر شده */
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
         
         .separator {
             color: #bb86fc;
-            font-size: 0.9rem;
+            font-size: 1.2rem; /* بزرگتر شده */
+            font-weight: bold;
         }
         
         @keyframes fadeInDown {
@@ -229,15 +238,32 @@
             
             .designer-info {
                 flex-direction: column;
-                gap: 5px;
+                gap: 10px;
             }
             
             .separator {
                 display: none;
             }
             
+            .designer-photo-small {
+                width: 50px; /* اندازه در موبایل */
+                height: 50px;
+            }
+            
+            .designer-name {
+                font-size: 1rem;
+            }
+            
+            .designer-signature {
+                font-size: 0.9rem;
+            }
+            
             h1 {
                 font-size: 2.5rem;
+            }
+            
+            .designer-footer {
+                padding: 12px 0;
             }
         }
         
@@ -390,7 +416,7 @@
         </div>
     </div>
     
-    <!-- مشخصات طراح در پایین صفحه -->
+    <!-- مشخصات طراح در پایین صفحه - بزرگتر -->
     <div class="designer-footer">
         <div class="designer-info">
             <img src="https://s34.picofile.com/file/8488183492/2.png" alt="طراح" class="designer-photo-small" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
