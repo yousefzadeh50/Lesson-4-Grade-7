@@ -1,1 +1,864 @@
-
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش لغات درس ۴ - زبان هفتم (شغل‌ها)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Lalezar&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px; /* فضا برای کارت طراح */
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        h1 {
+            font-family: 'Lalezar', cursive;
+            color: #fff;
+            font-size: 3.2rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #e1f5fe;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .vocabulary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: #7e57c2;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .word {
+            font-family: 'Lalezar', cursive;
+            font-size: 1.8rem;
+            color: #311b92;
+        }
+        
+        .pronunciation {
+            background: #7e57c2;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meaning {
+            font-size: 1.3rem;
+            color: #4527a0;
+            margin-bottom: 15px;
+            font-weight: 500;
+            padding-right: 5px;
+        }
+        
+        .example-container {
+            background: #f3e5f5;
+            border-radius: 15px;
+            padding: 18px;
+            margin-top: 15px;
+            border-right: 5px solid #7e57c2;
+        }
+        
+        .example {
+            font-size: 1.1rem;
+            color: #4a148c;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .example-meaning {
+            color: #6a1b9a;
+            font-size: 1rem;
+            padding-right: 10px;
+            border-right: 3px solid #ab47bc;
+        }
+        
+        .play-btn {
+            background: linear-gradient(to right, #7e57c2, #4527a0);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(126, 87, 194, 0.4);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(126, 87, 194, 0.6);
+        }
+        
+        /* کارت طراح سفارشی */
+        .designer-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 12px;
+            width: 220px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            animation: float 6s ease-in-out infinite;
+            border: 2px solid #7e57c2;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+        
+        .designer-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        
+        .designer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .designer-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #7e57c2;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(126, 87, 194, 0.3);
+        }
+        
+        .designer-name {
+            font-family: 'Montserrat', sans-serif;
+            color: #311b92;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        
+        .designer-title {
+            color: #666;
+            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .designer-signature {
+            font-family: 'Montserrat', sans-serif;
+            color: #5e35b1;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding-top: 8px;
+            border-top: 1px dashed #bb86fc;
+            width: 100%;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            background: linear-gradient(45deg, transparent, rgba(126, 87, 194, 0.1), transparent);
+            z-index: -1;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes glow {
+            from { opacity: 0.3; }
+            to { opacity: 0.7; }
+        }
+        
+        @media (max-width: 768px) {
+            .vocabulary-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .designer-card {
+                width: 180px;
+                padding: 10px;
+                right: 10px;
+                bottom: 10px;
+            }
+            
+            .designer-photo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .designer-name {
+                font-size: 1.2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            margin: 30px 0;
+            height: 12px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #ff4081, #7c4dff);
+            width: 0%;
+            border-radius: 50px;
+            transition: width 0.8s ease;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .control-btn {
+            background: #7e57c2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: #5e35b1;
+            transform: translateY(-3px);
+        }
+        
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: floatAround 20s linear infinite;
+        }
+        
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100px, 100px) rotate(360deg); }
+        }
+        
+        .pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <!-- آیکون‌های شناور در پس‌زمینه -->
+    <div class="floating-icons">
+        <div class="floating-icon" style="top:10%; left:5%; animation-delay: 0s;"><i class="fas fa-book"></i></div>
+        <div class="floating-icon" style="top:20%; left:90%; animation-delay: -5s;"><i class="fas fa-language"></i></div>
+        <div class="floating-icon" style="top:60%; left:10%; animation-delay: -10s;"><i class="fas fa-graduation-cap"></i></div>
+        <div class="floating-icon" style="top:80%; left:80%; animation-delay: -15s;"><i class="fas fa-microphone"></i></div>
+        <div class="floating-icon" style="top:40%; left:70%; animation-delay: -8s;"><i class="fas fa-volume-up"></i></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book-open"></i> آموزش لغات درس ۴ زبان هفتم</h1>
+            <p class="subtitle">شغل‌ها و اعضای خانواده - یادگیری تعاملی با تلفظ و مثال</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="playAllBtn">
+                    <i class="fas fa-play-circle"></i> پخش همه تلفظ‌ها
+                </button>
+                <button class="control-btn" id="resetBtn">
+                    <i class="fas fa-redo"></i> شروع مجدد
+                </button>
+            </div>
+        </header>
+        
+        <div class="vocabulary-container" id="vocabularyContainer">
+            <!-- کارت‌های لغات توسط JavaScript تولید می‌شوند -->
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <h4 id="totalWords">0</h4>
+                <p>تعداد لغات</p>
+            </div>
+            <div class="stat-item">
+                <h4 id="learnedWords">0</h4>
+                <p>لغات یادگرفته شده</p>
+            </div>
+            <div class="stat-item">
+                <h4 id="playedAudio">0</h4>
+                <p>تلفظ‌های پخش شده</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- کارت طراح سفارشی -->
+    <div class="designer-card">
+        <div class="glow-effect"></div>
+        <div class="designer-content">
+            <img src="https://s34.picofile.com/file/8488183492/2.png" alt="طراح" class="designer-photo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <div class="designer-name">Designer</div>
+            <div class="designer-title">آموزشی خلاق</div>
+            <div class="designer-signature">A.R. Yousefzadeh</div>
+        </div>
+    </div>
+    
+    <script>
+        // داده‌های درس ۴ (شغل‌ها و اعضای خانواده)
+        const vocabularyData = [
+            {
+                word: "engineer",
+                pronunciation: "/ˌen.dʒɪˈnɪr/",
+                meaning: "مهندس",
+                example: "My father is an engineer.",
+                exampleMeaning: "پدر من یک مهندس است.",
+                color: "#7e57c2"
+            },
+            {
+                word: "painter",
+                pronunciation: "/ˈpeɪn.t̬ɚ/",
+                meaning: "نقاش",
+                example: "She wants to be a painter.",
+                exampleMeaning: "او می‌خواهد یک نقاش شود.",
+                color: "#5e35b1"
+            },
+            {
+                word: "farmer",
+                pronunciation: "/ˈfɑːr.mɚ/",
+                meaning: "کشاورز",
+                example: "The farmer works in the field.",
+                exampleMeaning: "کشاورز در مزرعه کار می‌کند.",
+                color: "#4527a0"
+            },
+            {
+                word: "florist",
+                pronunciation: "/ˈflɔːr.ɪst/",
+                meaning: "گل‌فروش",
+                example: "My aunt is a florist.",
+                exampleMeaning: "عمه من یک گل‌فروش است.",
+                color: "#311b92"
+            },
+            {
+                word: "policeman",
+                pronunciation: "/pəˈliːs.mən/",
+                meaning: "پلیس",
+                example: "The policeman helps people.",
+                exampleMeaning: "پلیس به مردم کمک می‌کند.",
+                color: "#8e24aa"
+            },
+            {
+                word: "employee",
+                pronunciation: "/ɪmˈplɔɪ.iː/",
+                meaning: "کارمند",
+                example: "He is an employee in a bank.",
+                exampleMeaning: "او یک کارمند در بانک است.",
+                color: "#6a1b9a"
+            },
+            {
+                word: "postman",
+                pronunciation: "/ˈpoʊst.mən/",
+                meaning: "پستچی",
+                example: "The postman brings letters.",
+                exampleMeaning: "پستچی نامه‌ها را می‌آورد.",
+                color: "#4a148c"
+            },
+            {
+                word: "waiter",
+                pronunciation: "/ˈweɪ.t̬ɚ/",
+                meaning: "پیشخدمت",
+                example: "The waiter serves food.",
+                exampleMeaning: "پیشخدمت غذا سرو می‌کند.",
+                color: "#ad1457"
+            },
+            {
+                word: "teacher",
+                pronunciation: "/ˈtiː.tʃɚ/",
+                meaning: "معلم",
+                example: "Our teacher is very kind.",
+                exampleMeaning: "معلم ما بسیار مهربان است.",
+                color: "#c2185b"
+            },
+            {
+                word: "mechanic",
+                pronunciation: "/məˈkæn.ɪk/",
+                meaning: "مکانیک",
+                example: "The mechanic fixes cars.",
+                exampleMeaning: "مکانیک ماشین‌ها را تعمیر می‌کند.",
+                color: "#d81b60"
+            },
+            {
+                word: "doctor",
+                pronunciation: "/ˈdɑːk.tɚ/",
+                meaning: "دکتر",
+                example: "The doctor helps sick people.",
+                exampleMeaning: "دکتر به افراد بیمار کمک می‌کند.",
+                color: "#e91e63"
+            },
+            {
+                word: "shopkeeper",
+                pronunciation: "/ˈʃɑːpˌkiː.pɚ/",
+                meaning: "فروشنده",
+                example: "The shopkeeper sells fruits.",
+                exampleMeaning: "فروشنده میوه می‌فروشد.",
+                color: "#f06292"
+            },
+            {
+                word: "dentist",
+                pronunciation: "/ˈden.t̬ɪst/",
+                meaning: "دندانپزشک",
+                example: "I visit the dentist every year.",
+                exampleMeaning: "من هر سال به دندانپزشک مراجعه می‌کنم.",
+                color: "#ec407a"
+            },
+            {
+                word: "pilot",
+                pronunciation: "/ˈpaɪ.lət/",
+                meaning: "خلبان",
+                example: "The pilot flies the airplane.",
+                exampleMeaning: "خلبان هواپیما را هدایت می‌کند.",
+                color: "#ab47bc"
+            },
+            {
+                word: "nurse",
+                pronunciation: "/nɝːs/",
+                meaning: "پرستار",
+                example: "The nurse works in a hospital.",
+                exampleMeaning: "پرستار در بیمارستان کار می‌کند.",
+                color: "#ba68c8"
+            },
+            {
+                word: "baker",
+                pronunciation: "/ˈbeɪ.kɚ/",
+                meaning: "نانوا",
+                example: "The baker makes bread.",
+                exampleMeaning: "نانوا نان درست می‌کند.",
+                color: "#ce93d8"
+            },
+            {
+                word: "driver",
+                pronunciation: "/ˈdraɪ.vɚ/",
+                meaning: "راننده",
+                example: "My uncle is a bus driver.",
+                exampleMeaning: "دایی من راننده اتوبوس است.",
+                color: "#9c27b0"
+            },
+            {
+                word: "worker",
+                pronunciation: "/ˈwɝː.kɚ/",
+                meaning: "کارگر",
+                example: "The worker builds houses.",
+                exampleMeaning: "کارگر خانه می‌سازد.",
+                color: "#7b1fa2"
+            },
+            {
+                word: "cook",
+                pronunciation: "/kʊk/",
+                meaning: "آشپز",
+                example: "My mother is a good cook.",
+                exampleMeaning: "مادرم آشپز خوبی است.",
+                color: "#4a148c"
+            }
+        ];
+        
+        // داده‌های اعضای خانواده (از صفحه اول)
+        const familyData = [
+            {
+                word: "grandfather",
+                pronunciation: "/ˈɡræn.fɑː.ðɚ/",
+                meaning: "پدربزرگ",
+                example: "Hossein is my grandfather.",
+                exampleMeaning: "حسین پدربزرگ من است.",
+                color: "#1a237e"
+            },
+            {
+                word: "grandmother",
+                pronunciation: "/ˈɡræn.mʌð.ɚ/",
+                meaning: "مادربزرگ",
+                example: "Zahra is my grandmother.",
+                exampleMeaning: "زهرا مادربزرگ من است.",
+                color: "#283593"
+            },
+            {
+                word: "father",
+                pronunciation: "/ˈfɑː.ðɚ/",
+                meaning: "پدر",
+                example: "Mahdi is my father.",
+                exampleMeaning: "مهدی پدر من است.",
+                color: "#303f9f"
+            },
+            {
+                word: "mother",
+                pronunciation: "/ˈmʌð.ɚ/",
+                meaning: "مادر",
+                example: "Fatemeh is my mother.",
+                exampleMeaning: "فاطمه مادر من است.",
+                color: "#3949ab"
+            },
+            {
+                word: "aunt",
+                pronunciation: "/ænt/",
+                meaning: "عمه / خاله",
+                example: "Firoozeh is my aunt.",
+                exampleMeaning: "فیروزه عمه من است.",
+                color: "#3f51b5"
+            },
+            {
+                word: "uncle",
+                pronunciation: "/ˈʌŋ.kəl/",
+                meaning: "عمو / دایی",
+                example: "Farhad is my uncle.",
+                exampleMeaning: "فرهاد عموی من است.",
+                color: "#5c6bc0"
+            },
+            {
+                word: "wife",
+                pronunciation: "/waɪf/",
+                meaning: "همسر (زن)",
+                example: "Nassrin is my wife.",
+                exampleMeaning: "نسرین همسر من است.",
+                color: "#7986cb"
+            },
+            {
+                word: "son",
+                pronunciation: "/sʌn/",
+                meaning: "پسر",
+                example: "Reza is my son.",
+                exampleMeaning: "رضا پسر من است.",
+                color: "#9fa8da"
+            },
+            {
+                word: "daughter",
+                pronunciation: "/ˈdɑː.t̬ɚ/",
+                meaning: "دختر",
+                example: "Zeinab is my daughter.",
+                exampleMeaning: "زینب دختر من است.",
+                color: "#c5cae9"
+            }
+        ];
+        
+        // ترکیب داده‌های شغل‌ها و اعضای خانواده
+        const allVocabulary = [...vocabularyData, ...familyData];
+        
+        // حالت‌های برنامه
+        let learnedWords = new Set();
+        let playedAudioCount = 0;
+        let currentSpeech = null;
+        
+        // تابع برای تولید کارت‌های لغات
+        function generateVocabularyCards() {
+            const container = document.getElementById('vocabularyContainer');
+            container.innerHTML = '';
+            
+            allVocabulary.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.borderColor = item.color;
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3 class="word">${item.word}</h3>
+                        <div class="pronunciation">
+                            <i class="fas fa-volume-up"></i>
+                            <span>${item.pronunciation}</span>
+                        </div>
+                    </div>
+                    <p class="meaning">${item.meaning}</p>
+                    <div class="example-container">
+                        <p class="example"><strong>مثال:</strong> ${item.example}</p>
+                        <p class="example-meaning">${item.exampleMeaning}</p>
+                    </div>
+                    <button class="play-btn" data-index="${index}">
+                        <i class="fas fa-play"></i>
+                    </button>
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            updateStats();
+            setupEventListeners();
+        }
+        
+        // تابع برای پخش تلفظ
+        function playPronunciation(word, pronunciation, example, index) {
+            // اگر در حال پخش صدا هستیم، آن را متوقف کن
+            if (currentSpeech) {
+                window.speechSynthesis.cancel();
+            }
+            
+            // استفاده از Web Speech API برای تلفظ
+            const utterance = new SpeechSynthesisUtterance();
+            utterance.text = `${word}. Example: ${example}`;
+            utterance.lang = 'en-US';
+            utterance.rate = 0.8;
+            
+            utterance.onstart = function() {
+                // تغییر آیکون دکمه به حالت پخش
+                const playBtn = document.querySelector(`.play-btn[data-index="${index}"]`);
+                if (playBtn) {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.style.background = 'linear-gradient(to right, #f44336, #d32f2f)';
+                }
+                
+                // علامت‌گذاری کلمه به عنوان یادگرفته شده
+                learnedWords.add(index);
+                playedAudioCount++;
+                updateStats();
+                updateProgressBar();
+            };
+            
+            utterance.onend = function() {
+                // بازگرداندن آیکون دکمه به حالت عادی
+                const playBtn = document.querySelector(`.play-btn[data-index="${index}"]`);
+                if (playBtn) {
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playBtn.style.background = 'linear-gradient(to right, #7e57c2, #4527a0)';
+                }
+                currentSpeech = null;
+            };
+            
+            currentSpeech = utterance;
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        // تابع به‌روزرسانی آمار
+        function updateStats() {
+            document.getElementById('totalWords').textContent = allVocabulary.length;
+            document.getElementById('learnedWords').textContent = learnedWords.size;
+            document.getElementById('playedAudio').textContent = playedAudioCount;
+        }
+        
+        // تابع به‌روزرسانی نوار پیشرفت
+        function updateProgressBar() {
+            const progress = (learnedWords.size / allVocabulary.length) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        // تابع تنظیم گوش‌دهندگان رویداد
+        function setupEventListeners() {
+            // دکمه‌های پخش
+            document.querySelectorAll('.play-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const item = allVocabulary[index];
+                    playPronunciation(item.word, item.pronunciation, item.example, index);
+                });
+            });
+            
+            // کلیک روی کارت‌ها
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.play-btn')) {
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // دکمه پخش همه
+            document.getElementById('playAllBtn').addEventListener('click', function() {
+                playAllPronunciations();
+            });
+            
+            // دکمه شروع مجدد
+            document.getElementById('resetBtn').addEventListener('click', function() {
+                learnedWords.clear();
+                playedAudioCount = 0;
+                updateStats();
+                updateProgressBar();
+                
+                // توقف هرگونه پخش صدا
+                if (currentSpeech) {
+                    window.speechSynthesis.cancel();
+                }
+                
+                // بازگرداندن همه دکمه‌ها به حالت اولیه
+                document.querySelectorAll('.play-btn').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-play"></i>';
+                    btn.style.background = 'linear-gradient(to right, #7e57c2, #4527a0)';
+                });
+                
+                alert('پیشرفت یادگیری شما بازنشانی شد!');
+            });
+        }
+        
+        // تابع پخش تلفظ همه لغات
+        function playAllPronunciations() {
+            let index = 0;
+            
+            function playNext() {
+                if (index < allVocabulary.length) {
+                    const item = allVocabulary[index];
+                    playPronunciation(item.word, item.pronunciation, item.example, index);
+                    
+                    // تنظیم تایمر برای کلمه بعدی
+                    setTimeout(() => {
+                        index++;
+                        playNext();
+                    }, 3000); // 3 ثانیه فاصله بین هر کلمه
+                }
+            }
+            
+            playNext();
+        }
+        
+        // تابع اولیه‌سازی برنامه
+        function init() {
+            generateVocabularyCards();
+            updateProgressBar();
+            
+            // نمایش پیام خوش‌آمد
+            setTimeout(() => {
+                const welcomeMsg = new SpeechSynthesisUtterance();
+                welcomeMsg.text = "Welcome to English vocabulary learning. Lesson four, jobs and family members.";
+                welcomeMsg.lang = 'en-US';
+                welcomeMsg.rate = 0.9;
+                window.speechSynthesis.speak(welcomeMsg);
+            }, 1000);
+            
+            // اضافه کردن استایل برای stats
+            const style = document.createElement('style');
+            style.textContent = `
+                .stats {
+                    display: flex;
+                    justify-content: space-around;
+                    background: rgba(255, 255, 255, 0.9);
+                    border-radius: 20px;
+                    padding: 25px;
+                    margin-top: 30px;
+                    text-align: center;
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                }
+                
+                .stat-item h4 {
+                    color: #7e57c2;
+                    font-size: 2.2rem;
+                    margin-bottom: 8px;
+                    font-family: 'Lalezar', cursive;
+                }
+                
+                .stat-item p {
+                    color: #5e35b1;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // راه‌اندازی برنامه پس از بارگذاری صفحه
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
