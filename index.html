@@ -18,16 +18,15 @@
             background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
             color: #333;
             min-height: 100vh;
-            padding: 20px;
             position: relative;
             overflow-x: hidden;
+            padding-bottom: 50px; /* فضا برای مشخصات طراح */
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-bottom: 100px; /* فضا برای کارت طراح */
         }
         
         header {
@@ -66,7 +65,6 @@
             position: relative;
             overflow: hidden;
             border: 3px solid transparent;
-            cursor: pointer;
         }
         
         .card:hover {
@@ -129,105 +127,88 @@
             border-right: 3px solid #ab47bc;
         }
         
-        .play-btn {
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .audio-btn {
             background: linear-gradient(to right, #7e57c2, #4527a0);
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 15px auto 0;
+            gap: 8px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(126, 87, 194, 0.4);
         }
         
-        .play-btn:hover {
-            transform: scale(1.1);
+        .audio-btn:hover {
+            transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(126, 87, 194, 0.6);
         }
         
-        /* کارت طراح سفارشی */
-        .designer-card {
+        .audio-btn.word-btn {
+            background: linear-gradient(to right, #2196F3, #1976D2);
+        }
+        
+        .audio-btn.example-btn {
+            background: linear-gradient(to right, #4CAF50, #388E3C);
+        }
+        
+        /* مشخصات طراح در پایین صفحه */
+        .designer-footer {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            padding: 12px;
-            width: 220px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            z-index: 1000;
-            animation: float 6s ease-in-out infinite;
-            border: 2px solid #7e57c2;
-            backdrop-filter: blur(12px);
-            transition: all 0.4s ease;
-        }
-        
-        .designer-card:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-        }
-        
-        .designer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-top: 2px solid #7e57c2;
+            padding: 8px 0;
             text-align: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .designer-photo {
-            width: 70px;
-            height: 70px;
+        .designer-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .designer-photo-small {
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #7e57c2;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(126, 87, 194, 0.3);
+            border: 2px solid #7e57c2;
         }
         
         .designer-name {
-            font-family: 'Montserrat', sans-serif;
             color: #311b92;
-            font-size: 1.4rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 5px;
             letter-spacing: 0.5px;
         }
         
-        .designer-title {
-            color: #666;
-            font-size: 0.75rem;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        
         .designer-signature {
-            font-family: 'Montserrat', sans-serif;
             color: #5e35b1;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            padding-top: 8px;
-            border-top: 1px dashed #bb86fc;
-            width: 100%;
         }
         
-        .glow-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 16px;
-            background: linear-gradient(45deg, transparent, rgba(126, 87, 194, 0.1), transparent);
-            z-index: -1;
-            animation: glow 3s ease-in-out infinite alternate;
+        .separator {
+            color: #bb86fc;
+            font-size: 0.9rem;
         }
         
         @keyframes fadeInDown {
@@ -235,15 +216,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(0.5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        
-        @keyframes glow {
-            from { opacity: 0.3; }
-            to { opacity: 0.7; }
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
         }
         
         @media (max-width: 768px) {
@@ -251,20 +227,13 @@
                 grid-template-columns: 1fr;
             }
             
-            .designer-card {
-                width: 180px;
-                padding: 10px;
-                right: 10px;
-                bottom: 10px;
+            .designer-info {
+                flex-direction: column;
+                gap: 5px;
             }
             
-            .designer-photo {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .designer-name {
-                font-size: 1.2rem;
+            .separator {
+                display: none;
             }
             
             h1 {
@@ -347,10 +316,28 @@
             animation: pulse 1.5s infinite;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.7; }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-item h4 {
+            color: #7e57c2;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-family: 'Lalezar', cursive;
+        }
+        
+        .stat-item p {
+            color: #5e35b1;
+            font-size: 1rem;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -375,7 +362,7 @@
             
             <div class="controls">
                 <button class="control-btn" id="playAllBtn">
-                    <i class="fas fa-play-circle"></i> پخش همه تلفظ‌ها
+                    <i class="fas fa-play-circle"></i> پخش همه لغات
                 </button>
                 <button class="control-btn" id="resetBtn">
                     <i class="fas fa-redo"></i> شروع مجدد
@@ -403,14 +390,13 @@
         </div>
     </div>
     
-    <!-- کارت طراح سفارشی -->
-    <div class="designer-card">
-        <div class="glow-effect"></div>
-        <div class="designer-content">
-            <img src="https://s34.picofile.com/file/8488183492/2.png" alt="طراح" class="designer-photo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            <div class="designer-name">Designer</div>
-            <div class="designer-title">آموزشی خلاق</div>
-            <div class="designer-signature">A.R. Yousefzadeh</div>
+    <!-- مشخصات طراح در پایین صفحه -->
+    <div class="designer-footer">
+        <div class="designer-info">
+            <img src="https://s34.picofile.com/file/8488183492/2.png" alt="طراح" class="designer-photo-small" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <span class="designer-name">Designer</span>
+            <span class="separator">|</span>
+            <span class="designer-signature">A.R. Yousefzadeh</span>
         </div>
     </div>
     
@@ -678,9 +664,14 @@
                         <p class="example"><strong>مثال:</strong> ${item.example}</p>
                         <p class="example-meaning">${item.exampleMeaning}</p>
                     </div>
-                    <button class="play-btn" data-index="${index}">
-                        <i class="fas fa-play"></i>
-                    </button>
+                    <div class="audio-controls">
+                        <button class="audio-btn word-btn" data-index="${index}" data-type="word">
+                            <i class="fas fa-volume-up"></i> تلفظ کلمه
+                        </button>
+                        <button class="audio-btn example-btn" data-index="${index}" data-type="example">
+                            <i class="fas fa-play-circle"></i> پخش مثال
+                        </button>
+                    </div>
                 `;
                 
                 container.appendChild(card);
@@ -690,8 +681,8 @@
             setupEventListeners();
         }
         
-        // تابع برای پخش تلفظ
-        function playPronunciation(word, pronunciation, example, index) {
+        // تابع برای پخش تلفظ کلمه
+        function playWordPronunciation(word, pronunciation, index) {
             // اگر در حال پخش صدا هستیم، آن را متوقف کن
             if (currentSpeech) {
                 window.speechSynthesis.cancel();
@@ -699,31 +690,76 @@
             
             // استفاده از Web Speech API برای تلفظ
             const utterance = new SpeechSynthesisUtterance();
-            utterance.text = `${word}. Example: ${example}`;
+            utterance.text = word;
             utterance.lang = 'en-US';
             utterance.rate = 0.8;
             
             utterance.onstart = function() {
                 // تغییر آیکون دکمه به حالت پخش
-                const playBtn = document.querySelector(`.play-btn[data-index="${index}"]`);
-                if (playBtn) {
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    playBtn.style.background = 'linear-gradient(to right, #f44336, #d32f2f)';
+                const wordBtn = document.querySelector(`.word-btn[data-index="${index}"]`);
+                if (wordBtn) {
+                    const icon = wordBtn.querySelector('i');
+                    icon.className = 'fas fa-pause';
+                    wordBtn.style.opacity = '0.8';
                 }
                 
                 // علامت‌گذاری کلمه به عنوان یادگرفته شده
-                learnedWords.add(index);
-                playedAudioCount++;
-                updateStats();
-                updateProgressBar();
+                if (!learnedWords.has(index)) {
+                    learnedWords.add(index);
+                    playedAudioCount++;
+                    updateStats();
+                    updateProgressBar();
+                }
             };
             
             utterance.onend = function() {
                 // بازگرداندن آیکون دکمه به حالت عادی
-                const playBtn = document.querySelector(`.play-btn[data-index="${index}"]`);
-                if (playBtn) {
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    playBtn.style.background = 'linear-gradient(to right, #7e57c2, #4527a0)';
+                const wordBtn = document.querySelector(`.word-btn[data-index="${index}"]`);
+                if (wordBtn) {
+                    const icon = wordBtn.querySelector('i');
+                    icon.className = 'fas fa-volume-up';
+                    wordBtn.style.opacity = '1';
+                }
+                currentSpeech = null;
+            };
+            
+            currentSpeech = utterance;
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        // تابع برای پخش تلفظ مثال
+        function playExamplePronunciation(example, index) {
+            // اگر در حال پخش صدا هستیم، آن را متوقف کن
+            if (currentSpeech) {
+                window.speechSynthesis.cancel();
+            }
+            
+            // استفاده از Web Speech API برای تلفظ
+            const utterance = new SpeechSynthesisUtterance();
+            utterance.text = example;
+            utterance.lang = 'en-US';
+            utterance.rate = 0.8;
+            
+            utterance.onstart = function() {
+                // تغییر آیکون دکمه به حالت پخش
+                const exampleBtn = document.querySelector(`.example-btn[data-index="${index}"]`);
+                if (exampleBtn) {
+                    const icon = exampleBtn.querySelector('i');
+                    icon.className = 'fas fa-pause';
+                    exampleBtn.style.opacity = '0.8';
+                }
+                
+                playedAudioCount++;
+                updateStats();
+            };
+            
+            utterance.onend = function() {
+                // بازگرداندن آیکون دکمه به حالت عادی
+                const exampleBtn = document.querySelector(`.example-btn[data-index="${index}"]`);
+                if (exampleBtn) {
+                    const icon = exampleBtn.querySelector('i');
+                    icon.className = 'fas fa-play-circle';
+                    exampleBtn.style.opacity = '1';
                 }
                 currentSpeech = null;
             };
@@ -748,19 +784,28 @@
         
         // تابع تنظیم گوش‌دهندگان رویداد
         function setupEventListeners() {
-            // دکمه‌های پخش
-            document.querySelectorAll('.play-btn').forEach(btn => {
+            // دکمه‌های پخش کلمه
+            document.querySelectorAll('.word-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
                     const item = allVocabulary[index];
-                    playPronunciation(item.word, item.pronunciation, item.example, index);
+                    playWordPronunciation(item.word, item.pronunciation, index);
+                });
+            });
+            
+            // دکمه‌های پخش مثال
+            document.querySelectorAll('.example-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const item = allVocabulary[index];
+                    playExamplePronunciation(item.example, index);
                 });
             });
             
             // کلیک روی کارت‌ها
             document.querySelectorAll('.card').forEach(card => {
                 card.addEventListener('click', function(e) {
-                    if (!e.target.closest('.play-btn')) {
+                    if (!e.target.closest('.audio-btn')) {
                         this.classList.toggle('active');
                     }
                 });
@@ -784,9 +829,14 @@
                 }
                 
                 // بازگرداندن همه دکمه‌ها به حالت اولیه
-                document.querySelectorAll('.play-btn').forEach(btn => {
-                    btn.innerHTML = '<i class="fas fa-play"></i>';
-                    btn.style.background = 'linear-gradient(to right, #7e57c2, #4527a0)';
+                document.querySelectorAll('.audio-btn').forEach(btn => {
+                    const icon = btn.querySelector('i');
+                    if (btn.classList.contains('word-btn')) {
+                        icon.className = 'fas fa-volume-up';
+                    } else {
+                        icon.className = 'fas fa-play-circle';
+                    }
+                    btn.style.opacity = '1';
                 });
                 
                 alert('پیشرفت یادگیری شما بازنشانی شد!');
@@ -800,13 +850,20 @@
             function playNext() {
                 if (index < allVocabulary.length) {
                     const item = allVocabulary[index];
-                    playPronunciation(item.word, item.pronunciation, item.example, index);
                     
-                    // تنظیم تایمر برای کلمه بعدی
+                    // ابتدا کلمه را پخش کن
+                    playWordPronunciation(item.word, item.pronunciation, index);
+                    
+                    // سپس مثال را با تاخیر پخش کن
                     setTimeout(() => {
-                        index++;
-                        playNext();
-                    }, 3000); // 3 ثانیه فاصله بین هر کلمه
+                        playExamplePronunciation(item.example, index);
+                        
+                        // تنظیم تایمر برای کلمه بعدی
+                        setTimeout(() => {
+                            index++;
+                            playNext();
+                        }, 3000); // 3 ثانیه فاصله بین هر کلمه
+                    }, 1500); // 1.5 ثانیه فاصله بین کلمه و مثال
                 }
             }
             
@@ -826,35 +883,6 @@
                 welcomeMsg.rate = 0.9;
                 window.speechSynthesis.speak(welcomeMsg);
             }, 1000);
-            
-            // اضافه کردن استایل برای stats
-            const style = document.createElement('style');
-            style.textContent = `
-                .stats {
-                    display: flex;
-                    justify-content: space-around;
-                    background: rgba(255, 255, 255, 0.9);
-                    border-radius: 20px;
-                    padding: 25px;
-                    margin-top: 30px;
-                    text-align: center;
-                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-                }
-                
-                .stat-item h4 {
-                    color: #7e57c2;
-                    font-size: 2.2rem;
-                    margin-bottom: 8px;
-                    font-family: 'Lalezar', cursive;
-                }
-                
-                .stat-item p {
-                    color: #5e35b1;
-                    font-size: 1rem;
-                    font-weight: 500;
-                }
-            `;
-            document.head.appendChild(style);
         }
         
         // راه‌اندازی برنامه پس از بارگذاری صفحه
